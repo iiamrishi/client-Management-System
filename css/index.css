@@ -1,3 +1,42 @@
-.head{
-    font-family: 'Open Sans', sans-serif;
+:root {
+    --primary-color: #212121;
+    --background-color: #fff;
+    --text-primary-on-background: rgba(0, 0, 0, 0.87);
 }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-primary-on-background);
+
+}
+.navbar-container {
+    text-align: center; /* Center the navbar */
+}
+
+.navbar {
+    border-radius: 15px;
+}
+.navbar ul{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+
+}
+.navbar li{
+    background-color: #f5f5f5;
+    width: max-content;
+    padding: 8px 16px;
+    border-radius: 32px;
+    font-weight: 600;
+}
+.title-container {
+    text-align: center;
+}
+.bigtitle{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 90px;
+    font-weight: 400; /* Adjust the font weight (e.g., 400 for regular) */
+    line-height: 1.2; /* Adjust the line height as needed */
+}
+
