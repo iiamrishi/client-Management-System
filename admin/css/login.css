@@ -1,0 +1,81 @@
+:root {
+    --primary-color: #212121;
+    --background-color: #fff;
+    --text-primary-on-background: rgba(0, 0, 0, 0.87);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color);
+    color: var(--text-primary-on-background);
+}
+
+.login-container {
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 400px;
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 32px;
+}
+
+.full-input {
+    position: relative;
+    max-width: 80%;
+    width: 100%;
+    display: inline-block;
+    padding: 15px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+input {
+    outline: none;
+    border: none;
+    display: block;
+    line-height: 1.2em;
+    font-size: 14px;
+    width: calc(100% - 20px);
+}
+
+label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    display: block;
+    font-size: 12px;
+    color: black;
+    transition: top 0.3s, font-size 0.3s;
+}
+
+input:focus + label {
+    top: 5px; /* Adjust the value based on your preference */
+    font-size: 10px; /* Adjust the value based on your preference */
+}
+
+.login-button button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-button button:hover {
+    background-color: #444;
+}
