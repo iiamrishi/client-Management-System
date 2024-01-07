@@ -136,3 +136,25 @@ input:focus + label {
 .forgotpassword:hover {
   background-color: #f5f5f5;
 }
+#togglePassword {
+  cursor: pointer;
+}
+
+#togglePassword:hover {
+  color: #555; /* Change color on hover for better visibility */
+}
+.left-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px; /* Adjust this value as needed */
+  color: #888;
+}
+
+.right-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 25px; /* Adjust this value as needed */
+  color: #888;
+}
