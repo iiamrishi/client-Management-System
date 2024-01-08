@@ -1,70 +1,57 @@
-// Attach the function directly to the window object
 window.loadClientLoginPage = function () {
+  // Check if the client page is already loaded
+  if (isClientPageLoaded) {
+    console.log("Client page is already loaded.");
+    return;
+  }
+
+  // Set the flag to true before making the fetch request
+  isClientPageLoaded = true;
+
   // Get the content container
   const indexContent = document.getElementById("content-container");
 
-  // Toggle visibility
-  indexContent.style.display = "none";
-
-  // Load the CSS
-  loadCSS("./css/loginClient.css");
-};
-
-document.addEventListener("DOMContentLoaded", function () {
-  const emailInput = document.getElementById("emailInput");
-  const passwordInput = document.getElementById("passwordInput");
-  const togglePassword = document.getElementById("togglePassword");
-  const emailLabel = document.querySelector('label[for="emailInput"]');
-  const passwordLabel = document.querySelector('label[for="passwordInput"]');
-
-  // Check if elements exist before adding event listeners
-  if (
-    emailInput &&
-    passwordInput &&
-    togglePassword &&
-    emailLabel &&
-    passwordLabel
-  ) {
-    let passwordVisible = false;
-
-    // Toggle password visibility on click
-    togglePassword.addEventListener("click", function () {
-      passwordVisible = !passwordVisible;
-
-      const type = passwordVisible ? "text" : "password";
-      passwordInput.setAttribute("type", type);
-
-      // Toggle between "visibility" and "visibility_off" icons
-      togglePassword.textContent = passwordVisible
-        ? "visibility_off"
-        : "visibility";
-    });
-
-    // Hide the labels when there is any input in the respective fields
-    emailInput.addEventListener("input", function () {
-      emailLabel.style.display = emailInput.value.length > 0 ? "none" : "block";
-    });
-
-    passwordInput.addEventListener("input", function () {
-      passwordLabel.style.display =
-        passwordInput.value.length > 0 ? "none" : "block";
-    });
-
-    // Hide the eye icon initially
-    togglePassword.style.display = "none";
-
-    // Show the eye icon when typing a password
-    passwordInput.addEventListener("input", function () {
-      togglePassword.style.display =
-        passwordInput.value.length > 0 ? "block" : "none";
-    });
+  // Check if indexContent is defined
+  if (!indexContent) {
+    console.error("Error: Element with ID 'content-container' not found.");
+    return;
   }
-});
 
-function loadCSS(href) {
-  var link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.type = "text/css";
-  link.href = href;
-  document.getElementsByTagName("head")[0].appendChild(link);
-}
+  // Load the client login page content using fetch
+  fetch("/client/loginClient.html")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch loginClient.html (${response.status} ${response.statusText})`
+        );
+      }
+      return response.text();
+    })
+    .then((data) => {
+      // Set the inner HTML of content-container to the fetched content
+      indexContent.innerHTML = data;
+
+      // Rest of your code for handling visibility
+      let passwordVisible = false;
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordInput = document.getElementById("passwordInput");
+
+      // Toggle password visibility on click
+      togglePassword.addEventListener("click", function () {
+        passwordVisible = !passwordVisible;
+
+        const type = passwordVisible ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+
+        // Toggle between "visibility" and "visibility_off" icons
+        togglePassword.textContent = passwordVisible
+          ? "visibility_off"
+          : "visibility";
+      });
+
+      // Rest of your code...
+    })
+    .catch((error) => {
+      console.error("Error fetching loginClient.html:", error);
+    });
+};

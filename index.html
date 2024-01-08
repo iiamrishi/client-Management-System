@@ -8,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login-Admin</title>
     <link rel="stylesheet" href="./client/css/loginClient.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/index.css"> <!-- Include index.css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <script src="./client/js/loginClient.js" defer></script>
+    <script src="./client/js/loginClient.js"></script>
+
 </head>
 
 <body>
@@ -27,42 +28,34 @@
             </ul>
         </nav>
     </div>
-
     <!-- Content Container to load pages dynamically -->
     <div id="content-container">
         <!-- Default content goes here -->
-        <div class="title-container">
-            <h1 class="bigtitle">Client Management<br> System.</h1>
-        </div>
+    </div>
+
+    <div class="title-container">
+        <h1 class="bigtitle">Client Management<br> System.</h1>
     </div>
 
     <script>
         function loadClientLoginPage() {
+            console.log("Function loadClientLoginPage is being called.");
+
             // Get the content container
-            const contentContainer = document.getElementById("content-container");
+            const indexContent = document.getElementById("content-container");
 
-            // Load the client login page content
-            contentContainer.innerHTML = `
-                <div class="login-container">
-                    <h1>Sign in</h1>
-                    <div class="wrapper">
-                        <!-- Include the content of loginClient.html here -->
-                        <!-- ... (your existing content) ... -->
-                    </div>
-                </div>
-            `;
+            // Toggle visibility
+            indexContent.style.display = "block";
 
-            // Load the CSS for the client login page
-            loadCSS("./client/css/loginClient.css");
-        }
+            // Create a link element for the CSS
+            const cssLink = document.createElement("link");
+            cssLink.rel = "stylesheet";
+            cssLink.type = "text/css";
+            cssLink.href = "./client/css/loginClient.css";
 
-        // Function to load CSS dynamically
-        function loadCSS(href) {
-            var link = document.createElement("link");
-            link.rel = "stylesheet";
-            link.type = "text/css";
-            link.href = href;
-            document.getElementsByTagName("head")[0].appendChild(link);
+            // Append the link element to the head
+            document.head.appendChild(cssLink);
+            console.log("End of loadClientLoginPage function.");
         }
     </script>
 </body>
