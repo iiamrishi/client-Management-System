@@ -1,57 +1,43 @@
-window.loadClientLoginPage = function () {
-  // Check if the client page is already loaded
-  if (isClientPageLoaded) {
-    console.log("Client page is already loaded.");
-    return;
+document.addEventListener("DOMContentLoaded", function () {
+  const emailInput = document.getElementById("emailInput");
+  const passwordInput = document.getElementById("passwordInput");
+  const togglePassword = document.getElementById("togglePassword");
+  const emailLabel = document.querySelector('label[for="emailInput"]');
+  const passwordLabel = document.querySelector('label[for="passwordInput"]');
+  let passwordVisible = false;
+
+  // Toggle password visibility on click
+  togglePassword?.addEventListener("click", function () {
+    passwordVisible = !passwordVisible;
+
+    const type = passwordVisible ? "text" : "password";
+    passwordInput?.setAttribute("type", type);
+
+    // Toggle between "visibility" and "visibility_off" icons
+    togglePassword.textContent = passwordVisible
+      ? "visibility_off"
+      : "visibility";
+  });
+
+  // Function to handle input and label display
+  function handleInputAndLabel(input, label) {
+    label.style.display = input.value.length > 0 ? "none" : "block";
   }
 
-  // Set the flag to true before making the fetch request
-  isClientPageLoaded = true;
+  // Hide the labels when there is any input in the respective fields
+  emailInput?.addEventListener("input", function () {
+    handleInputAndLabel(emailInput, emailLabel);
+  });
 
-  // Get the content container
-  const indexContent = document.getElementById("content-container");
+  passwordInput?.addEventListener("input", function () {
+    handleInputAndLabel(passwordInput, passwordLabel);
 
-  // Check if indexContent is defined
-  if (!indexContent) {
-    console.error("Error: Element with ID 'content-container' not found.");
-    return;
-  }
+    // Show the eye icon when typing a password
+    togglePassword &&
+      (togglePassword.style.display =
+        passwordInput.value.length > 0 ? "block" : "none");
+  });
 
-  // Load the client login page content using fetch
-  fetch("/client/loginClient.html")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          `Failed to fetch loginClient.html (${response.status} ${response.statusText})`
-        );
-      }
-      return response.text();
-    })
-    .then((data) => {
-      // Set the inner HTML of content-container to the fetched content
-      indexContent.innerHTML = data;
-
-      // Rest of your code for handling visibility
-      let passwordVisible = false;
-      const togglePassword = document.getElementById("togglePassword");
-      const passwordInput = document.getElementById("passwordInput");
-
-      // Toggle password visibility on click
-      togglePassword.addEventListener("click", function () {
-        passwordVisible = !passwordVisible;
-
-        const type = passwordVisible ? "text" : "password";
-        passwordInput.setAttribute("type", type);
-
-        // Toggle between "visibility" and "visibility_off" icons
-        togglePassword.textContent = passwordVisible
-          ? "visibility_off"
-          : "visibility";
-      });
-
-      // Rest of your code...
-    })
-    .catch((error) => {
-      console.error("Error fetching loginClient.html:", error);
-    });
-};
+  // Hide the eye icon initially
+  togglePassword && (togglePassword.style.display = "none");
+});
