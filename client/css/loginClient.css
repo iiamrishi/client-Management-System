@@ -47,23 +47,30 @@ input {
   display: block;
   line-height: 1.2em;
   font-size: 14px;
-  width: calc(100% - 20px);
+  padding-left: 30px; /* Adjust this value to create space for the icons */
+  width: calc(100% - 50px); /* Adjust this value to accommodate the icons */
 }
 
+/* Adjust the label styling */
 label {
   position: absolute;
   top: 50%;
+  left: 50px; /* Adjust this value based on your preference */
   transform: translateY(-50%);
-  left: 10px;
   display: block;
   font-size: 12px;
   color: black;
-  transition: top 0.3s, font-size 0.3s;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Add transition for transform */
+  white-space: nowrap; /* Prevent line break for the label */
+
+  /* Keep the label at the center when not visible */
+  pointer-events: none;
 }
 
 input:focus + label {
-  top: 5px; /* Adjust the value based on your preference */
-  font-size: 10px; /* Adjust the value based on your preference */
+  opacity: 0;
+  transform: translateY(-50%) scale(0.8); /* Scale down the label when not visible */
 }
 
 .login-button button {
@@ -79,6 +86,7 @@ input:focus + label {
 .login-button button:hover {
   background-color: #444;
 }
+
 #togglePassword {
   cursor: pointer;
 }
@@ -86,11 +94,12 @@ input:focus + label {
 #togglePassword:hover {
   color: #555; /* Change color on hover for better visibility */
 }
+
 .left-icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 10px; /* Adjust this value as needed */
+  left: 10px; /* Adjust this value based on your preference */
   color: #888;
 }
 
@@ -98,6 +107,6 @@ input:focus + label {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 25px; /* Adjust this value as needed */
+  right: 10px; /* Adjust this value based on your preference */
   color: #888;
 }
