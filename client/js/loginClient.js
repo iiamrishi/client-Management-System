@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let passwordVisible = false;
 
   // Toggle password visibility on click
-  togglePassword?.addEventListener("click", function () {
+  togglePassword.addEventListener("click", function () {
     passwordVisible = !passwordVisible;
 
     const type = passwordVisible ? "text" : "password";
-    passwordInput?.setAttribute("type", type);
+    passwordInput.setAttribute("type", type);
 
     // Toggle between "visibility" and "visibility_off" icons
     togglePassword.textContent = passwordVisible
@@ -19,25 +19,22 @@ document.addEventListener("DOMContentLoaded", function () {
       : "visibility";
   });
 
-  // Function to handle input and label display
-  function handleInputAndLabel(input, label) {
-    label.style.display = input.value.length > 0 ? "none" : "block";
-  }
-
   // Hide the labels when there is any input in the respective fields
-  emailInput?.addEventListener("input", function () {
-    handleInputAndLabel(emailInput, emailLabel);
+  emailInput.addEventListener("input", function () {
+    emailLabel.style.display = emailInput.value.length > 0 ? "none" : "block";
   });
 
-  passwordInput?.addEventListener("input", function () {
-    handleInputAndLabel(passwordInput, passwordLabel);
-
-    // Show the eye icon when typing a password
-    togglePassword &&
-      (togglePassword.style.display =
-        passwordInput.value.length > 0 ? "block" : "none");
+  passwordInput.addEventListener("input", function () {
+    passwordLabel.style.display =
+      passwordInput.value.length > 0 ? "none" : "block";
   });
 
   // Hide the eye icon initially
-  togglePassword && (togglePassword.style.display = "none");
+  togglePassword.style.display = "none";
+
+  // Show the eye icon when typing a password
+  passwordInput.addEventListener("input", function () {
+    togglePassword.style.display =
+      passwordInput.value.length > 0 ? "block" : "none";
+  });
 });

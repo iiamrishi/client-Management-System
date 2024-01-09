@@ -1,37 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Add Material Icons link -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-    <link rel="stylesheet" href="./css/index.css"> <!-- Include index.css -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Management System</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- Include index.css -->
+    <link rel="stylesheet" href="./admin/css/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <div class="navbar-container">
-    <nav class="navbar">
+      <nav class="navbar">
         <ul>
-            <li>Home</li>
-            <li>Client</li>
-            <li><a href="./admin/login.html">Admin</a></li>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="#" onclick="loadClientLogin()">Client</a></li>
+          <li><a href="#" onclick="loadAdminLogin()">Admin</a></li>
         </ul>
-        </div>
+      </nav>
     </div>
+
     <div class="title-container">
-        <h1 class="bigtitle">Client Management<br> System.</h1>
+      <h1 class="bigtitle">
+        Client Management<br />
+        System.
+      </h1>
     </div>
 
+    <!-- Content to be hidden initially -->
+    <div id="content" class="hidden">
+      <!-- This is where the content from login.html will be loaded -->
+    </div>
 
-</body>
+    <script>
+      function loadClientLogin() {
+        // Get the content container and bigtitle element
+        var contentContainer = document.getElementById("content");
+        var bigTitleElement = document.querySelector(".bigtitle");
 
+        // Hide the existing content and bigtitle
+        contentContainer.classList.add("hidden");
+        bigTitleElement.classList.add("hidden");
+
+        // Load the content of loginClient.html using fetch
+        fetch("./client/loginClient.html")
+          .then((response) => response.text())
+          .then((data) => {
+            // Show the new content and remove the hidden class
+            contentContainer.innerHTML = data;
+            contentContainer.classList.remove("hidden");
+          });
+      }
+
+      function loadAdminLogin() {
+        // Get the content container and bigtitle element
+        var contentContainer = document.getElementById("content");
+        var bigTitleElement = document.querySelector(".bigtitle");
+
+        // Hide the existing content and bigtitle
+        contentContainer.classList.add("hidden");
+        bigTitleElement.classList.add("hidden");
+
+        // Load the content of login.html using fetch
+        fetch("./admin/login.html")
+          .then((response) => response.text())
+          .then((data) => {
+            // Show the new content and remove the hidden class
+            contentContainer.innerHTML = data;
+            contentContainer.classList.remove("hidden");
+          });
+      }
+    </script>
+  </body>
 </html>

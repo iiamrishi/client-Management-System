@@ -3,16 +3,6 @@
   --background-color: #fff;
   --text-primary-on-background: rgba(0, 0, 0, 0.87);
 }
-@keyframes fadeInUp {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
 
 body {
   margin: 0;
@@ -25,7 +15,6 @@ body {
 }
 
 .login-container {
-  font-family: "Open Sans", sans-serif;
   border: 1px solid black;
   text-align: center;
   display: flex;
@@ -38,12 +27,6 @@ body {
   padding: 10px;
   box-sizing: border-box;
   border-radius: 32px;
-  opacity: 0; /* Set initial opacity to 0 */
-  animation: fadeInUp 1s forwards;
-  overflow: hidden;
-}
-html {
-  overflow: hidden; /* Hide the scroll bar on the html element */
 }
 
 .full-input {
@@ -58,36 +41,20 @@ html {
   border-radius: 20px;
 }
 
-.icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 10px;
-  color: #888;
-}
-
-.input-container {
-  position: relative;
-}
-
 input {
-  font-family: "Open Sans", sans-serif;
   outline: none;
   border: none;
   display: block;
   line-height: 1.2em;
   font-size: 14px;
   width: calc(100% - 20px);
-  padding-left: 30px;
 }
 
 label {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 40px;
+  left: 10px;
   display: block;
   font-size: 12px;
   color: black;
@@ -95,46 +62,22 @@ label {
 }
 
 input:focus + label {
-  opacity: 0; /* Set opacity to 0 when the input is focused */
+  top: 5px; /* Adjust the value based on your preference */
+  font-size: 10px; /* Adjust the value based on your preference */
 }
 
 .login-button button {
-  color: #212121;
+  background-color: var(--primary-color);
+  color: #fff;
   padding: 15px 20px;
   border: none;
-  border-radius: 32px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 600;
 }
 
 .login-button button:hover {
-  background-color: #f5f5f5;
-}
-
-.footer {
-  margin-top: 75px;
-  font-family: "Open Sans", sans-serif;
-  display: flex;
-  justify-content: space-around;
-}
-.signup {
-  width: max-content;
-  padding: 8px 16px;
-  border-radius: 32px;
-  font-weight: 600;
-}
-.signup:hover {
-  background-color: #f5f5f5;
-}
-.forgotpassword {
-  width: max-content;
-  padding: 8px 16px;
-  border-radius: 32px;
-  font-weight: 600;
-}
-.forgotpassword:hover {
-  background-color: #f5f5f5;
+  background-color: #444;
 }
 #togglePassword {
   cursor: pointer;
