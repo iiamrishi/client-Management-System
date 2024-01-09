@@ -4,6 +4,17 @@
   --text-primary-on-background: rgba(0, 0, 0, 0.87);
 }
 
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -15,6 +26,7 @@ body {
 }
 
 .login-container {
+  font-family: "Open Sans", sans-serif;
   border: 1px solid black;
   text-align: center;
   display: flex;
@@ -27,6 +39,13 @@ body {
   padding: 10px;
   box-sizing: border-box;
   border-radius: 32px;
+  opacity: 1;
+  animation: fadeInUp 1s forwards;
+  overflow: hidden;
+}
+
+html {
+  overflow: hidden;
 }
 
 .full-input {
@@ -41,72 +60,52 @@ body {
   border-radius: 20px;
 }
 
-input {
+.input-container {
+  position: relative;
+}
+
+/* Adjusted styles for the email and password inputs */
+input[type="email"],
+input[type="password"] {
+  font-family: "Open Sans", sans-serif;
   outline: none;
   border: none;
   display: block;
   line-height: 1.2em;
   font-size: 14px;
-  padding-left: 30px; /* Adjust this value to create space for the icons */
-  width: calc(100% - 50px); /* Adjust this value to accommodate the icons */
+  width: (100% - 40px); /* Adjusted width to full width */
+  padding-left: 30px; /* Adjusted padding for the email and password inputs */
 }
 
-/* Adjust the label styling */
-label {
+/* Styles for the mail and lock icons */
+.icon.mail-icon,
+.icon.lock-icon {
   position: absolute;
   top: 50%;
-  left: 50px; /* Adjust this value based on your preference */
   transform: translateY(-50%);
-  display: block;
-  font-size: 12px;
-  color: black;
-  opacity: 1;
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Add transition for transform */
-  white-space: nowrap; /* Prevent line break for the label */
-
-  /* Keep the label at the center when not visible */
-  pointer-events: none;
+  left: 10px; /* Move both mail and lock icons to the left side */
+  color: #888;
 }
 
-input:focus + label {
-  opacity: 0;
-  transform: translateY(-50%) scale(0.8); /* Scale down the label when not visible */
-}
-
-.login-button button {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 15px 20px;
-  border: none;
-  border-radius: 8px;
+/* Adjusted styles for the eye icon */
+.icon.right-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px; /* Adjusted positioning to move the eye icon to the right side */
+  color: #888;
   cursor: pointer;
-  font-size: 16px;
+  width: 20px;
 }
 
-.login-button button:hover {
-  background-color: #444;
+/* Additional styles for the eye icon on hover */
+.icon.right-icon:hover {
+  color: #555;
 }
-
-#togglePassword {
-  cursor: pointer;
-}
-
-#togglePassword:hover {
-  color: #555; /* Change color on hover for better visibility */
-}
-
 .left-icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 10px; /* Adjust this value based on your preference */
-  color: #888;
-}
-
-.right-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10px; /* Adjust this value based on your preference */
+  left: 10px; /* Adjust this value as needed */
   color: #888;
 }
