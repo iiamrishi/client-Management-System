@@ -1,90 +1,106 @@
 :root {
-    --primary-color: #212121;
-    --background-color: #fff;
-    --text-primary-on-background: rgba(0, 0, 0, 0.87);
+  --primary-color: #212121;
+  --background-color: #fff;
+  --text-primary-on-background: rgba(0, 0, 0, 0.87);
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--background-color);
-    color: var(--text-primary-on-background);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  color: var(--text-primary-on-background);
 }
 
 .login-container {
-    border: 1px solid black;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 60vh;
-    width: 400px;
-    margin: auto;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 32px;
+  font-family: "Open Sans", sans-serif;
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  width: 400px;
+  margin: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 32px;
+  opacity: 1;
+  animation: fadeInUp 1s forwards;
+  overflow: hidden;
+}
+
+html {
+  overflow: hidden;
 }
 
 .full-input {
-    position: relative;
-    max-width: 80%;
-    width: 100%;
-    display: inline-block;
-    padding: 15px;
-    border: 1px solid black;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    border-radius: 20px;
+  position: relative;
+  max-width: 80%;
+  width: 100%;
+  display: inline-block;
+  padding: 15px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border-radius: 20px;
 }
 
-input {
-    outline: none;
-    border: none;
-    display: block;
-    line-height: 1.2em;
-    font-size: 14px;
-    width: calc(100% - 20px);
+.input-container {
+  position: relative;
 }
 
-label {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 10px;
-    display: block;
-    font-size: 12px;
-    color: black;
-    transition: top 0.3s, font-size 0.3s;
+/* Adjusted styles for the email and password inputs */
+input[type="email"],
+input[type="password"] {
+  font-family: "Open Sans", sans-serif;
+  outline: none;
+  border: none;
+  display: block;
+  line-height: 1.2em;
+  font-size: 14px;
+  width: (100% - 40px); /* Adjusted width to full width */
+  padding-left: 30px; /* Adjusted padding for the email and password inputs */
 }
 
-input:focus + label {
-    top: 5px; /* Adjust the value based on your preference */
-    font-size: 10px; /* Adjust the value based on your preference */
+/* Styles for the mail and lock icons */
+.icon.mail-icon,
+.icon.lock-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px; /* Move both mail and lock icons to the left side */
+  color: #888;
 }
 
-.login-button button {
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.login-button button:hover {
-    background-color: #444;
-}
-#togglePassword {
+/* Adjusted styles for the eye icon */
+.icon.right-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px; /* Adjusted positioning to move the eye icon to the right side */
+  color: #888;
   cursor: pointer;
+  width: 20px;
 }
 
-#togglePassword:hover {
-  color: #555; /* Change color on hover for better visibility */
+/* Additional styles for the eye icon on hover */
+.icon.right-icon:hover {
+  color: #555;
 }
 .left-icon {
   position: absolute;
@@ -93,11 +109,20 @@ input:focus + label {
   left: 10px; /* Adjust this value as needed */
   color: #888;
 }
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+}
+.loginButton button {
+  color: #000000de;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
-.right-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 25px; /* Adjust this value as needed */
-  color: #888;
+.loginButton button:hover {
+  background-color: #f5f5f5;
 }
