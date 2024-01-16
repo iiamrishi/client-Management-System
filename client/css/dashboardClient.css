@@ -1,0 +1,20 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+.sidebar {
+  width: 180px;
+  height: 100vh;
+  background-color: aqua;
+}
+
+.nav_list a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+.nav_list li {
+  border: 1px solid black;
+  border-radius: 32px;
+  margin-bottom: 10px;
+}
