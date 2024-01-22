@@ -1,20 +1,83 @@
+body,
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
+  background-color: #eeeeee;
 }
+
 .sidebar {
+  display: flex;
+  flex-direction: column;
   width: 180px;
-  height: 100vh;
-  background-color: aqua;
+  height: 100%; /* Set height to 100% */
+  background-color: #fafafa;
+  border-radius: 25px;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+.logo_content {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.nav_list {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.nav_list li:hover {
+  background-color: #e0e0e0;
 }
 
 .nav_list a {
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: black;
+  transition: color 0.3s;
+  padding: 10px;
+  box-sizing: border-box;
 }
-ul {
-  list-style: none;
-}
+
 .nav_list li {
-  border: 1px solid black;
+  border: 1px solid #fafafa;
   border-radius: 32px;
   margin-bottom: 10px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.material-symbols-outlined {
+  margin-right: 10px;
+}
+#sidebar.collapsed {
+  width: 50px; /* Adjust width as needed for the collapsed state */
+  /* Add any other styles for a collapsed state */
+}
+
+#sidebar.collapsed .nav_list li {
+  text-align: center; /* Center text/icons for collapsed state */
+  margin-bottom: 5px; /* Adjust margin as needed */
+}
+#sidebar.collapsed .nav_list li span {
+  display: none; /* Hide the text */
+}
+
+#sidebar.collapsed .nav_list a {
+  justify-content: center; /* Center content in the anchor for collapsed state */
+  overflow: hidden; /* Hide overflowing text */
+}
+
+#sidebar.collapsed .material-symbols-outlined {
+  margin-right: 0; /* Remove margin for icons in collapsed state */
+}
+#sidebar.collapsed .nav_list a .material-symbols-outlined {
+  margin-right: 0; /* Adjust margin for icons in collapsed state */
 }
