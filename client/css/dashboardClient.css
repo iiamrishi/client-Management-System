@@ -1,6 +1,7 @@
 body,
 html {
   height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 180px;
-  height: 100%; /* Set height to 100% */
+  height: 97%; /* Set height to 100% */
   background-color: #fafafa;
   border-radius: 25px;
   overflow-y: hidden;
@@ -57,27 +58,39 @@ body {
 .material-symbols-outlined {
   margin-right: 10px;
 }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
 #sidebar.collapsed {
-  width: 50px; /* Adjust width as needed for the collapsed state */
-  /* Add any other styles for a collapsed state */
+  width: 70px; /* Adjust width as needed for the collapsed state */
+  animation: fadeOut 0.3s ease; /* Use the fadeOut animation for collapsing */
 }
 
 #sidebar.collapsed .nav_list li {
   text-align: center; /* Center text/icons for collapsed state */
   margin-bottom: 5px; /* Adjust margin as needed */
 }
-#sidebar.collapsed .nav_list li span {
-  display: none; /* Hide the text */
-}
 
 #sidebar.collapsed .nav_list a {
   justify-content: center; /* Center content in the anchor for collapsed state */
-  overflow: hidden; /* Hide overflowing text */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+#sidebar.collapsed .links_name {
+  display: none; /* Hide the text */
 }
 
 #sidebar.collapsed .material-symbols-outlined {
   margin-right: 0; /* Remove margin for icons in collapsed state */
 }
+
 #sidebar.collapsed .nav_list a .material-symbols-outlined {
-  margin-right: 0; /* Adjust margin for icons in collapsed state */
+  margin-right: 0px; /* Adjust margin for icons in collapsed state */
 }
