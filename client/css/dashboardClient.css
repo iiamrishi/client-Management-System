@@ -94,3 +94,14 @@ body {
 #sidebar.collapsed .nav_list a .material-symbols-outlined {
   margin-right: 0px; /* Adjust margin for icons in collapsed state */
 }
+#menuIcon {
+  cursor: pointer;
+  border: 1px solid #fafafa;
+  border-radius: 32px;
+  /* margin-bottom: 10px; */
+  align-items: center;
+  overflow: hidden;
+}
+#menuIcon:hover {
+  background-color: #e0e0e0;
+}
