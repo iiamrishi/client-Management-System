@@ -32,7 +32,6 @@ body {
 
 .card {
   width: calc(33.33% - 10px); /* Adjust size as needed */
-  height: 300px; /* Keep width and height the same for square */
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -44,6 +43,10 @@ body {
   transition: transform 0.3s;
   padding: 20px;
   box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.rectangle-card {
+  width: calc(66.66% - 10px); /* Adjust width for rectangle */
 }
 
 .card:hover {
