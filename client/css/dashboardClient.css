@@ -61,11 +61,12 @@ body {
 
 .canvas-container {
   width: 100%; /* Ensure canvas container fills the card */
+  height: 240px;
 }
 
 canvas {
   max-width: 100%; /* Ensure the canvas scales within the card */
-  height: auto; /* Allow the canvas to adjust its height */
+  height: 100%; /* Allow the canvas to adjust its height */
 }
 
 .nav_list {
