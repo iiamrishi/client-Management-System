@@ -23,11 +23,14 @@ body {
 
 .main-content {
   flex-grow: 1; /* Take the remaining space */
-  display: flex;
   padding: 20px;
   box-sizing: border-box;
-  align-items: flex-start; /* Align items to the top */
-  justify-content: flex-start; /* Align items to the left */
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows the cards to wrap to the next line */
+  gap: 20px; /* Adds space between the cards */
 }
 
 .card {
