@@ -1,29 +1,66 @@
 body,
 html {
   height: 100%;
+  margin: 0;
   overflow: hidden;
 }
 
 body {
   font-family: "Open Sans", sans-serif;
   background-color: #eeeeee;
+  display: flex;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
   width: 180px;
-  height: 97%; /* Set height to 100% */
+  height: auto;
   background-color: #fafafa;
-  border-radius: 25px;
   overflow-y: hidden;
   box-sizing: border-box;
 }
 
-.logo_content {
+.main-content {
+  flex-grow: 1; /* Take the remaining space */
   display: flex;
-  align-items: center;
   padding: 20px;
+  box-sizing: border-box;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: flex-start; /* Align items to the left */
+}
+
+.card {
+  width: 300px; /* Adjust size as needed */
+  height: 300px; /* Keep width and height the same for square */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Slight lift on hover */
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.card-content p {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
 }
 
 .nav_list {
@@ -94,14 +131,16 @@ body {
 #sidebar.collapsed .nav_list a .material-symbols-outlined {
   margin-right: 0px; /* Adjust margin for icons in collapsed state */
 }
+
 #menuIcon {
   cursor: pointer;
   border: 1px solid #fafafa;
   border-radius: 32px;
-  /* margin-bottom: 10px; */
   align-items: center;
   overflow: hidden;
+  margin-left: 18px;
 }
+
 #menuIcon:hover {
   background-color: #e0e0e0;
 }
