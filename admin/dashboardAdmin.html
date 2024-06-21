@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <script src="/client/js/sidebar.js"></script>
+    <script src="/admin/js/sidebarAdmin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
@@ -107,8 +107,26 @@
       </div>
       <div class="card">
         <div class="card-content">
-          <h2>Card Title 2</h2>
-          <p>This is a square card.</p>
+          <h2>Analysis</h2>
+          <div class="canvas-container">
+            <canvas id="doughnutChart"></canvas>
+            <div class="legend-container">
+              <div class="legend-item">
+                <span
+                  class="legend-dot"
+                  style="background-color: #bf80ff"
+                ></span>
+                <span class="legend-label">Mail Received</span>
+              </div>
+              <div class="legend-item">
+                <span
+                  class="legend-dot"
+                  style="background-color: #ffaa80"
+                ></span>
+                <span class="legend-label">Call Received</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="card">
@@ -172,6 +190,55 @@
               ticks: {
                 callback: function (value) {
                   return value + " k";
+                },
+              },
+            },
+          },
+        },
+      });
+
+      // JavaScript for Pie Chart
+      var doughnutCtx = document
+        .getElementById("doughnutChart")
+        .getContext("2d");
+      var doughnutChart = new Chart(doughnutCtx, {
+        type: "doughnut",
+        data: {
+          labels: ["Mail Recevied", "Call Recevied"],
+          datasets: [
+            {
+              label: "# of Votes",
+              data: [12, 19],
+              backgroundColor: ["#bf80ff", "#ffaa80"],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: "right",
+              labels: {
+                font: { size: 14 },
+                boxWidth: 20,
+                padding: 15,
+              },
+            },
+            tooltip: {
+              callbacks: {
+                label: function (tooltipItem, data) {
+                  var dataset = data.datasets[tooltipItem.datasetIndex];
+                  var total = dataset.data.reduce(function (
+                    previousValue,
+                    currentValue
+                  ) {
+                    return previousValue + currentValue;
+                  });
+                  var currentValue = dataset.data[tooltipItem.index];
+                  var percentage = Math.round((currentValue / total) * 100);
+                  return percentage + "%";
                 },
               },
             },

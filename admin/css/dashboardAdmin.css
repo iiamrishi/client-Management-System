@@ -310,3 +310,34 @@ canvas {
 .rectangle-card {
   width: calc(60% - 20px); /* Adjust rectangle card width for smaller screens */
 }
+/* dashboardAdmin.css */
+
+/* Style for legend container */
+.legend-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Style for each legend item */
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+/* Style for legend dot */
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* Style for legend label */
+.legend-label {
+  font-size: 14px;
+}
