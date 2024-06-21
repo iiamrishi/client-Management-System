@@ -57,9 +57,9 @@
     <div class="main-content">
       <div class="card rectangle-card">
         <div class="card-content">
-          <h2>Monthly Sales Overview</h2>
+          <h2>Client Visited</h2>
           <div class="canvas-container">
-            <canvas id="myChart"></canvas>
+            <canvas id="curvedLineChart"></canvas>
           </div>
         </div>
       </div>
@@ -79,28 +79,59 @@
     </div>
 
     <script>
-      // Example Chart.js code to create a basic chart
-      var ctx = document.getElementById("myChart").getContext("2d");
-      var myChart = new Chart(ctx, {
-        type: "bar",
+      var ctx = document.getElementById("curvedLineChart").getContext("2d");
+      var curvedLineChart = new Chart(ctx, {
+        type: "line",
         data: {
-          labels: ["January", "February", "March", "April", "May", "June"],
+          labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
           datasets: [
             {
-              label: "Sales",
-              data: [50, 60, 70, 65, 80, 85],
-              backgroundColor: "rgba(54, 162, 235, 0.2)",
-              borderColor: "rgba(54, 162, 235, 1)",
-              borderWidth: 1,
+              label: "Client Visited",
+              data: [
+                100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200,
+              ],
+              borderColor: "#2196f3",
+              backgroundColor: "rgba(33, 150, 243, 0.2)",
+              borderWidth: 2,
+              pointRadius: 0, // Set point radius to 0 to hide points
+              lineTension: 0.2, // Control the curve of the line
             },
           ],
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false, // Hide the legend
+            },
+          },
           scales: {
+            x: {
+              grid: {
+                display: false,
+              },
+            },
             y: {
               beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  return "" + value;
+                },
+              },
             },
           },
         },
