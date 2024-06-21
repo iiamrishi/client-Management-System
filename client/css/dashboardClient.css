@@ -25,16 +25,13 @@ body {
   flex-grow: 1; /* Take the remaining space */
   padding: 20px;
   box-sizing: border-box;
-}
-
-.card-container {
   display: flex;
   flex-wrap: wrap; /* Allows the cards to wrap to the next line */
   gap: 20px; /* Adds space between the cards */
 }
 
 .card {
-  width: 300px; /* Adjust size as needed */
+  width: calc(33.33% - 10px); /* Adjust size as needed */
   height: 300px; /* Keep width and height the same for square */
   background-color: white;
   border: 1px solid #ddd;
@@ -45,6 +42,8 @@ body {
   align-items: center;
   text-align: center;
   transition: transform 0.3s;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 .card:hover {
@@ -52,18 +51,16 @@ body {
 }
 
 .card-content {
-  padding: 20px;
+  width: 100%; /* Ensure content fills the card */
 }
 
-.card-content h2 {
-  margin: 0 0 10px;
-  font-size: 24px;
+.canvas-container {
+  width: 100%; /* Ensure canvas container fills the card */
 }
 
-.card-content p {
-  margin: 0;
-  font-size: 16px;
-  color: #555;
+canvas {
+  max-width: 100%; /* Ensure the canvas scales within the card */
+  height: auto; /* Allow the canvas to adjust its height */
 }
 
 .nav_list {
