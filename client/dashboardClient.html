@@ -57,7 +57,23 @@
     <div class="main-content">
       <div class="card rectangle-card">
         <div class="card-content">
-          <h2>Client Visited</h2>
+          <div class="card-header">
+            <h2>Client Visited</h2>
+            <div class="dropdown">
+              <button class="dropbtn">
+                <span class="material-symbols-outlined"> calendar_today </span>
+                Months
+                <span class="material-symbols-outlined dropdown-arrow"
+                  >expand_more</span
+                >
+              </button>
+              <div class="dropdown-content">
+                <a href="#">Jan</a>
+                <a href="#">Feb</a>
+                <a href="#">Mar</a>
+              </div>
+            </div>
+          </div>
           <div class="canvas-container">
             <canvas id="curvedLineChart"></canvas>
           </div>

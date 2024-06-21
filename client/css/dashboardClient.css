@@ -55,10 +55,27 @@ body {
 }
 
 .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative; /* Ensure relative positioning for child elements */
   width: 100%; /* Ensure content fills the card */
+  height: 100%; /* Ensure content fills the card */
   text-align: left; /* Align text to the left */
+  padding: 20px; /* Add padding to create space */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
-
+.card-content h2 {
+  margin-top: 0; /* Remove default margin */
+  margin-bottom: 10px; /* Add space between title and description */
+  font-size: 1.5rem; /* Adjust font size as needed */
+  color: #333; /* Adjust text color */
+}
+.card-content p {
+  margin-top: 0; /* Remove default margin */
+  font-size: 1rem; /* Adjust font size as needed */
+  color: #666; /* Adjust text color */
+}
 .canvas-container {
   width: 100%; /* Ensure canvas container fills the card */
   height: 240px;
@@ -149,4 +166,82 @@ canvas {
 
 #menuIcon:hover {
   background-color: #e0e0e0;
+}
+.card:nth-child(2) .card-content {
+  position: relative; /* Ensure relative positioning for child elements */
+  width: 100%; /* Ensure content fills the card */
+  height: 100%; /* Ensure content fills the card */
+  text-align: left; /* Align text to the left */
+  padding: 20px; /* Add padding to create space */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.card:nth-child(2) .card-content h2 {
+  margin-top: 0; /* Remove default margin */
+  margin-bottom: 10px; /* Add space between title and description */
+  font-size: 1.5rem; /* Adjust font size as needed */
+  color: #333; /* Adjust text color */
+}
+
+.card:nth-child(2) .card-content p {
+  margin-top: 0; /* Remove default margin */
+  font-size: 1rem; /* Adjust font size as needed */
+  color: #666; /* Adjust text color */
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropbtn {
+  background-color: white;
+  color: black;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #3498db;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #2980b9;
+}
+
+.dropdown-arrow {
+  margin-left: 8px;
+  font-size: 16px;
 }
