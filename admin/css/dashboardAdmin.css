@@ -227,6 +227,12 @@ canvas {
   justify-content: space-between;
   border-radius: 12px;
 }
+input[type="date"]::-webkit-datetime-edit {
+  color: transparent;
+}
+input[type="date"]:focus::-webkit-datetime-edit {
+  color: initial;
+}
 
 /* Dropdown styling */
 .dropdown {
