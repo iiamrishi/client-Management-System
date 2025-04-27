@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Client Settings</title>
+    <link rel="stylesheet" href="./css/settings.css" />
+  </head>
+  <body>
+    <div class="settings-container">
+      <div class="settings-header">Edit Client Details</div>
+      <form class="settings-form" action="update-client.php" method="post">
+        <div class="full-input input-container">
+          <i class="icon left-icon">&#128100;</i>
+          <!-- User icon -->
+          <input
+            type="text"
+            name="client_name"
+            placeholder="Client Name"
+            required
+          />
+        </div>
+
+        <div class="full-input input-container">
+          <i class="icon left-icon">&#9993;</i>
+          <!-- Mail icon -->
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+          />
+        </div>
+
+        <div class="full-input input-container">
+          <i class="icon left-icon">&#128222;</i>
+          <!-- Phone icon -->
+          <input type="text" name="phone" placeholder="Phone Number" />
+        </div>
+
+        <div class="full-input input-container">
+          <i class="icon left-icon">&#127968;</i>
+          <!-- House icon -->
+          <input type="text" name="address" placeholder="Address" />
+        </div>
+
+        <div class="full-input input-container">
+          <i class="icon left-icon">&#128188;</i>
+          <!-- Briefcase icon -->
+          <input type="text" name="company" placeholder="Company Name" />
+        </div>
+
+        <div class="full-input input-container">
+          <select name="status" required>
+            <option value="">Select Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+
+        <div class="full-input input-container">
+          <textarea
+            name="notes"
+            placeholder="Notes about client..."
+            rows="4"
+          ></textarea>
+        </div>
+
+        <div class="loginButton">
+          <button type="submit">Save Client Settings</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
