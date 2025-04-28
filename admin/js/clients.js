@@ -145,22 +145,43 @@ document.getElementById("searchClient").addEventListener("keyup", searchClient);
 // Function to handle sorting based on dropdown selection
 document.getElementById("sortClients").addEventListener("change", (e) => {
   const column = e.target.value;
-  sortTable(column); // Call sortTable with the selected column
+  const currentDirection = e.target.dataset.sortDirection || "asc"; // Default to ascending
+
+  // Toggle sorting direction
+  const newDirection = currentDirection === "asc" ? "desc" : "asc";
+  e.target.dataset.sortDirection = newDirection;
+
+  sortTable(column, newDirection); // Sort the table based on column and direction
 });
 
-// Function to sort the table based on selected column
-function sortTable(column) {
+// Function to sort the table based on selected column and direction
+function sortTable(column, direction) {
   const sortedClients = [...clients];
 
-  // Sort clients based on the selected column
   if (column === "name") {
-    sortedClients.sort((a, b) => a.name.localeCompare(b.name));
+    sortedClients.sort((a, b) =>
+      direction === "asc"
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name)
+    );
   } else if (column === "email") {
-    sortedClients.sort((a, b) => a.email.localeCompare(b.email));
+    sortedClients.sort((a, b) =>
+      direction === "asc"
+        ? a.email.localeCompare(b.email)
+        : b.email.localeCompare(a.email)
+    );
   } else if (column === "company") {
-    sortedClients.sort((a, b) => a.company.localeCompare(b.company));
+    sortedClients.sort((a, b) =>
+      direction === "asc"
+        ? a.company.localeCompare(b.company)
+        : b.company.localeCompare(a.company)
+    );
   } else if (column === "status") {
-    sortedClients.sort((a, b) => a.status.localeCompare(b.status));
+    sortedClients.sort((a, b) =>
+      direction === "asc"
+        ? a.status.localeCompare(b.status)
+        : b.status.localeCompare(a.status)
+    );
   }
 
   loadClients(sortedClients); // Reload the clients list with sorted data
