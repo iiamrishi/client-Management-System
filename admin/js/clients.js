@@ -22,12 +22,12 @@ const clients = [
 
 let editingIndex = null; // Track whether we're editing or adding
 
-// Function to populate table
-function loadClients() {
+// Function to populate table with either all clients or filtered clients
+function loadClients(clientList) {
   const tableBody = document.getElementById("client-table-body");
   tableBody.innerHTML = ""; // Clear before loading
 
-  clients.forEach((client, index) => {
+  clientList.forEach((client, index) => {
     const row = document.createElement("tr");
 
     row.innerHTML = `
@@ -46,10 +46,23 @@ function loadClients() {
   });
 }
 
-// View client (still simple)
+// View client (show details in a modal)
 function viewClient(index) {
-  alert(`Viewing client: ${clients[index].name}`);
+  const client = clients[index];
+  // Populate the view modal with client details
+  document.getElementById("viewClientName").textContent = client.name;
+  document.getElementById("viewClientEmail").textContent = client.email;
+  document.getElementById("viewClientCompany").textContent = client.company;
+  document.getElementById("viewClientStatus").textContent = client.status;
+
+  // Show the view modal
+  document.getElementById("viewClientModal").style.display = "block";
 }
+
+// Close the view client modal
+document.getElementById("closeViewModalBtn").addEventListener("click", () => {
+  document.getElementById("viewClientModal").style.display = "none";
+});
 
 // Edit client
 function editClient(index) {
@@ -67,7 +80,7 @@ function editClient(index) {
 function deleteClient(index) {
   if (confirm(`Are you sure you want to delete ${clients[index].name}?`)) {
     clients.splice(index, 1);
-    loadClients();
+    loadClients(clients); // Reload the clients list after deletion
   }
 }
 
@@ -105,10 +118,55 @@ clientForm.addEventListener("submit", function (e) {
     editingIndex = null;
   }
 
-  loadClients();
+  loadClients(clients); // Reload clients after add/edit
   clientModal.style.display = "none";
   clientForm.reset();
 });
 
+// Search Client functionality
+function searchClient() {
+  const searchTerm = document
+    .getElementById("searchClient")
+    .value.toLowerCase();
+  const filteredClients = clients.filter((client) => {
+    return (
+      client.name.toLowerCase().includes(searchTerm) ||
+      client.email.toLowerCase().includes(searchTerm) ||
+      client.company.toLowerCase().includes(searchTerm)
+    );
+  });
+
+  loadClients(filteredClients); // Load the filtered list
+}
+
+// Add event listener to search input
+document.getElementById("searchClient").addEventListener("keyup", searchClient);
+
+// Function to handle sorting based on dropdown selection
+document.getElementById("sortClients").addEventListener("change", (e) => {
+  const column = e.target.value;
+  sortTable(column); // Call sortTable with the selected column
+});
+
+// Function to sort the table based on selected column
+function sortTable(column) {
+  const sortedClients = [...clients];
+
+  // Sort clients based on the selected column
+  if (column === "name") {
+    sortedClients.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (column === "email") {
+    sortedClients.sort((a, b) => a.email.localeCompare(b.email));
+  } else if (column === "company") {
+    sortedClients.sort((a, b) => a.company.localeCompare(b.company));
+  } else if (column === "status") {
+    sortedClients.sort((a, b) => a.status.localeCompare(b.status));
+  }
+
+  loadClients(sortedClients); // Reload the clients list with sorted data
+}
+
 // Load initial clients
-document.addEventListener("DOMContentLoaded", loadClients);
+document.addEventListener("DOMContentLoaded", () => {
+  loadClients(clients);
+});

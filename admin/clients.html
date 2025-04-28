@@ -20,6 +20,15 @@
     <div class="main-content">
       <h1>Manage Clients</h1>
       <button id="addClientBtn" class="add-client-button">+ New Client</button>
+      <input type="text" id="searchClient" placeholder="Search clients..." />
+      <!-- Sorting Dropdown -->
+      <label for="sortClients">Sort by:</label>
+      <select id="sortClients">
+        <option value="name">Name</option>
+        <option value="email">Email</option>
+        <option value="company">Company</option>
+        <option value="status">Status</option>
+      </select>
       <table class="client-table">
         <thead>
           <tr>
@@ -61,6 +70,19 @@
             Cancel
           </button>
         </form>
+      </div>
+    </div>
+    <!-- View Client Modal -->
+    <div id="viewClientModal" class="modal">
+      <div class="modal-content">
+        <h2>Client Details</h2>
+        <p><strong>Name:</strong> <span id="viewClientName"></span></p>
+        <p><strong>Email:</strong> <span id="viewClientEmail"></span></p>
+        <p><strong>Company:</strong> <span id="viewClientCompany"></span></p>
+        <p><strong>Status:</strong> <span id="viewClientStatus"></span></p>
+        <div class="modal-buttons">
+          <button id="closeViewModalBtn">Close</button>
+        </div>
       </div>
     </div>
 
