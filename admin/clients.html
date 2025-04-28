@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Clients</title>
+    <link rel="stylesheet" href="../css/dashboardAdmin.css" />
+    <link rel="stylesheet" href="./css/clients.css" />
+    <!-- optional new css -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sidebar" id="sidebar">
+      <!-- Copy your sidebar here -->
+    </div>
+
+    <div class="main-content">
+      <h1>Manage Clients</h1>
+      <button id="addClientBtn" class="add-client-button">+ New Client</button>
+      <table class="client-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="client-table-body">
+          <!-- Dynamic rows inserted here by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="./js/clients.js"></script>
+  </body>
+</html>
