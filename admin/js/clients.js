@@ -20,6 +20,8 @@ const clients = [
   },
 ];
 
+let editingIndex = null; // Track whether we're editing or adding
+
 // Function to populate table
 function loadClients() {
   const tableBody = document.getElementById("client-table-body");
@@ -44,56 +46,69 @@ function loadClients() {
   });
 }
 
+// View client (still simple)
 function viewClient(index) {
   alert(`Viewing client: ${clients[index].name}`);
 }
 
+// Edit client
 function editClient(index) {
-  alert(`Editing client: ${clients[index].name}`);
+  clientModal.style.display = "block";
+
+  document.getElementById("clientName").value = clients[index].name;
+  document.getElementById("clientEmail").value = clients[index].email;
+  document.getElementById("clientCompany").value = clients[index].company;
+  document.getElementById("clientStatus").value = clients[index].status;
+
+  editingIndex = index;
 }
 
+// Delete client
 function deleteClient(index) {
   if (confirm(`Are you sure you want to delete ${clients[index].name}?`)) {
-    clients.splice(index, 1); // Remove from array
-    loadClients(); // Reload table
+    clients.splice(index, 1);
+    loadClients();
   }
 }
 
-// Load clients when page loads
-document.addEventListener("DOMContentLoaded", loadClients);
-// Handle opening and closing the modal
+// Open/close modal handlers
 const addClientBtn = document.getElementById("addClientBtn");
 const clientModal = document.getElementById("clientModal");
 const closeModalBtn = document.getElementById("closeModalBtn");
 
 addClientBtn.addEventListener("click", () => {
   clientModal.style.display = "block";
+  editingIndex = null; // If clicked "Add New", make sure it's fresh
+  clientForm.reset();
 });
 
 closeModalBtn.addEventListener("click", () => {
   clientModal.style.display = "none";
+  editingIndex = null;
+  clientForm.reset();
 });
 
-// Handle adding a new client
+// Form submit handler
 const clientForm = document.getElementById("clientForm");
 clientForm.addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent form from reloading page
+  e.preventDefault();
 
-  // Get form values
   const name = document.getElementById("clientName").value;
   const email = document.getElementById("clientEmail").value;
   const company = document.getElementById("clientCompany").value;
   const status = document.getElementById("clientStatus").value;
 
-  // Add to clients array
-  clients.push({ name, email, company, status });
+  if (editingIndex === null) {
+    clients.push({ name, email, company, status });
+  } else {
+    clients[editingIndex] = { name, email, company, status };
+    editingIndex = null;
+  }
 
-  // Refresh table
   loadClients();
-
-  // Close modal
   clientModal.style.display = "none";
-
-  // Clear form
   clientForm.reset();
 });
+
+// Load initial clients
+document.addEventListener("DOMContentLoaded", loadClients);
